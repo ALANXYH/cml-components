@@ -1,0 +1,79 @@
+<template>
+  <view>
+    <web-view src='{{src}}' bindmessage='{{bindmessage}}' bindload='{{bindload}}' binderror='{{binderror}}'></web-view>
+  </view>
+</template>
+
+<script>
+
+class WebView implements WebViewInterface {
+  props = {
+    src: {
+      type: String,
+      default: ''
+    },
+    bindmessage: {
+      type: String,
+      default: ''
+    },
+    bindload: {
+      type: String,
+      default: ''
+    },
+    binderror: {
+      type: String,
+      default: ''
+    }
+  }
+
+  data = {
+  }
+
+  computed = {
+  }
+
+  watch = {
+  }
+  
+  methods = {
+  }
+
+  beforeCreate() {
+  }
+
+  created() {
+  }
+
+  beforeMount() {
+  }
+
+  mounted() {
+    this.$cmlEmit('onshow',{
+      value: this.src
+    })
+  }
+
+  beforeDestroy() {
+  }
+  
+  destroyed() {
+  }
+}
+
+export default new WebView();
+</script>
+
+<style >
+
+</style>
+
+<script cml-type="json">
+{
+  "base": {
+    "usingComponents": {}
+  }
+}
+</script>
+
+
+

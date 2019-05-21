@@ -1,0 +1,69 @@
+<template>
+  <view>
+    <text class='textStyle'>{{newTime}}</text>
+  </view>
+</template>
+
+<script>
+  import moment from "moment"
+class TimeFormate implements TimeFormateInterface {
+  props = {
+    time: {
+      type: String,
+      default: ''
+    }
+  }
+
+  data = {
+    newTime: ''
+  }
+
+  computed = {
+  }
+
+  watch = {
+  }
+
+  methods = {
+    timeFormate(e){
+     let time = moment(this.time).format('YYYY年MM月DD日')
+     this.newTime = time
+    }
+  }
+
+  beforeCreate() {
+  }
+
+  created() {
+  }
+
+  beforeMount() {
+  }
+
+  mounted() {
+    this.timeFormate()
+  }
+
+  beforeDestroy() {
+  }
+
+  destroyed() {
+  }
+}
+
+export default new TimeFormate();
+</script>
+
+<style >
+.textStyle {
+    font-size: 22cpx;
+}
+</style>
+
+<script cml-type="json">
+{
+  "base": {
+    "usingComponents": {}
+  }
+}
+</script>

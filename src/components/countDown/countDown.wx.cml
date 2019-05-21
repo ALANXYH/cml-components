@@ -1,0 +1,85 @@
+<template>
+  <view>
+    <view class="textStyle">{{countDownTime}}活动将失效</view>
+  </view>
+</template>
+
+<script>
+  import moment from "moment"
+
+class CountDown implements CountDownInterface {
+  props = {
+    startTime: {
+      type: String,
+      default: ''
+    },
+    endTime: {
+      type: String,
+      default: ''
+    }
+  }
+
+  data = {
+    countDownTime:''
+  }
+
+  computed = {
+  }
+
+  watch = {
+  }
+
+  methods = {
+    // 倒计时方法
+      countDown(){
+        // console.log(e)
+        // let time = moment(moment(this.endTime)-moment(this.seversTime)).format('DD天HH时mm分ss秒')
+        const startTime = moment(this.startTime)
+        const endTime = moment(this.endTime)
+        const time = moment(endTime - startTime).valueOf()
+        this.time = time
+        const that = this
+        // console.log(that.time)
+        setInterval(() => {
+          that.time = parseInt(that.time) - parseInt(1000)
+          that.countDownTime = moment(that.time).format('DD天HH时mm分ss秒')
+              },1000)
+      }
+  }
+
+  beforeCreate() {
+  }
+
+  created() {
+  }
+
+  beforeMount() {
+  }
+
+  mounted() {
+    this.countDown()
+  }
+
+  beforeDestroy() {
+  }
+
+  destroyed() {
+  }
+}
+
+export default new CountDown();
+</script>
+
+<style >
+.textStyle {
+    font-size: 22cpx;
+}
+</style>
+
+<script cml-type="json">
+{
+  "base": {
+    "usingComponents": {}
+  }
+}
+</script>
